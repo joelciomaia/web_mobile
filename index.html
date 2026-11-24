@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal de estudos do Curso Técnico em Informática.">
+  <title>Trilha Técnica | Curso Técnico em Informática</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header">
+    <div class="container header__content">
+      <a class="brand" href="#inicio" aria-label="Trilha Técnica - página inicial">
+        <span class="brand__mark">T<span>/</span></span>
+        <span><strong>Trilha</strong>Técnica<small>Curso Técnico em Informática</small></span>
+      </a>
+
+      <nav class="nav" id="menu" aria-label="Navegação principal">
+        <a href="#disciplinas">Disciplinas</a>
+        <a href="#trilha">Trilha</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="presentation-launch" id="presentationButton" type="button" aria-label="Iniciar modo apresentação" title="Iniciar modo apresentação">
+          <span aria-hidden="true">▶</span><strong>Apresentar</strong>
+        </button>
+        <button class="icon-button" id="themeButton" type="button" aria-label="Ativar tema escuro" title="Alternar tema">☾</button>
+        <button class="trail-button" id="openTrail" type="button">
+          Minha trilha <span id="trailCount">0</span>
+        </button>
+        <button class="menu-button" id="menuButton" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-label="Destaques">
+      <div class="container hero__frame">
+        <div class="hero__slides">
+          <article class="hero__slide is-active" data-slide="0">
+            <div class="hero__copy">
+              <span class="eyebrow">Aprenda construindo</span>
+              <h1>Transforme ideias em <em>projetos reais.</em></h1>
+              <p>Um espaço para revisar conteúdos, descobrir conexões entre as disciplinas e praticar tecnologia no seu ritmo.</p>
+              <a class="button button--light" href="#disciplinas">Explorar disciplinas <span>→</span></a>
+            </div>
+            <div class="hero__visual" aria-hidden="true">
+              <div class="code-card">
+                <div class="code-card__top"><i></i><i></i><i></i><span>primeiro-projeto.js</span></div>
+                <pre><code><b>const</b> ideia = <span>"aprender"</span>;
+
+<b>function</b> praticar() {
+  <b>return</b> ideia + <span>" fazendo"</span>;
+}
+
+console.log(praticar());</code></pre>
+              </div>
+              <span class="float-tag float-tag--one">HTML</span>
+              <span class="float-tag float-tag--two">{ JS }</span>
+            </div>
+          </article>
+
+          <article class="hero__slide" data-slide="1">
+            <div class="hero__copy">
+              <span class="eyebrow">Conteúdo conectado</span>
+              <h2>Do hardware à nuvem, <em>tudo faz parte.</em></h2>
+              <p>Veja como lógica, programação, banco de dados e redes trabalham juntas em uma solução completa.</p>
+              <a class="button button--light" href="#trilha">Conhecer a trilha <span>→</span></a>
+            </div>
+            <div class="hero__visual network-visual" aria-hidden="true">
+              <span class="network-node network-node--center">💻</span>
+              <span class="network-node network-node--a">☁</span>
+              <span class="network-node network-node--b">⌘</span>
+              <span class="network-node network-node--c">◫</span>
+              <span class="network-line network-line--a"></span>
+              <span class="network-line network-line--b"></span>
+              <span class="network-line network-line--c"></span>
+            </div>
+          </article>
+
+          <article class="hero__slide" data-slide="2">
+            <div class="hero__copy">
+              <span class="eyebrow">Desafio da turma</span>
+              <h2>Seu próximo projeto começa <em>com uma linha.</em></h2>
+              <p>Use este próprio site como laboratório: altere cores, textos, filtros e crie novas funcionalidades.</p>
+              <button class="button button--light" type="button" data-course="web">Ver o desafio <span>→</span></button>
+            </div>
+            <div class="hero__visual challenge-visual" aria-hidden="true">
+              <span class="challenge-visual__number">01</span>
+              <span class="challenge-visual__label">site<br>completo</span>
+              <span class="challenge-visual__arrow">↗</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="hero__controls" aria-label="Controles do carrossel">
+          <button type="button" class="hero__arrow" id="previousSlide" aria-label="Destaque anterior">←</button>
+          <div class="hero__dots">
+            <button class="is-active" type="button" data-go-to="0" aria-label="Ir ao destaque 1"></button>
+            <button type="button" data-go-to="1" aria-label="Ir ao destaque 2"></button>
+            <button type="button" data-go-to="2" aria-label="Ir ao destaque 3"></button>
+          </div>
+          <button type="button" class="hero__arrow" id="nextSlide" aria-label="Próximo destaque">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-area" aria-label="Busca de disciplinas">
+      <div class="container search-box">
+        <label for="searchInput">O que você quer aprender?</label>
+        <div class="search-box__input">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Ex.: JavaScript, redes, banco de dados..." autocomplete="off">
+          <button id="clearSearch" type="button" aria-label="Limpar busca" hidden>×</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section subjects" id="disciplinas">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow eyebrow--dark">Áreas de estudo</span>
+            <h2>Escolha por onde começar.</h2>
+          </div>
+          <p>Conteúdos organizados por etapa para você encontrar rapidamente o que precisa revisar ou praticar.</p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filtrar por ano">
+          <button class="filter is-active" type="button" data-filter="all">Todas</button>
+          <button class="filter" type="button" data-filter="1">1º ano · Fundamentos</button>
+          <button class="filter" type="button" data-filter="2">2º ano · Atual</button>
+          <button class="filter" type="button" data-filter="3">3º ano · Sistemas</button>
+        </div>
+
+        <div class="subject-grid" id="subjectGrid">
+          <article class="subject-card subject-card--purple" data-year="2" data-search="desenvolvimento web html css javascript sites internet">
+            <div class="subject-card__top"><span class="subject-card__icon">&lt;/&gt;</span><span class="tag">2º ano</span></div>
+            <h3>Desenvolvimento Web</h3>
+            <p>Crie páginas responsivas e interativas com HTML, CSS e JavaScript.</p>
+            <button type="button" data-course="web">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--orange" data-year="2" data-search="desenvolvimento mobile aplicativos celular responsivo app">
+            <div class="subject-card__top"><span class="subject-card__icon">▯</span><span class="tag">2º ano</span></div>
+            <h3>Desenvolvimento Mobile</h3>
+            <p>Entenda interfaces, eventos e a construção de experiências para dispositivos móveis.</p>
+            <button type="button" data-course="mobile">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--blue" data-year="2" data-search="linguagem programação javascript variáveis funções algoritmos código">
+            <div class="subject-card__top"><span class="subject-card__icon">{ }</span><span class="tag">2º ano</span></div>
+            <h3>Linguagem de Programação</h3>
+            <p>Use JavaScript para trabalhar com dados, decisões, repetições e funções.</p>
+            <button type="button" data-course="programacao">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--green" data-year="2" data-search="redes computadores internet ip protocolos segurança conexão">
+            <div class="subject-card__top"><span class="subject-card__icon">⌁</span><span class="tag">2º ano</span></div>
+            <h3>Redes de Computadores</h3>
+            <p>Descubra como os dispositivos se comunicam e como a internet chega até você.</p>
+            <button type="button" data-course="redes">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--pink" data-year="1" data-search="lógica programação algoritmos fluxograma pseudocódigo decisão repetição">
+            <div class="subject-card__top"><span class="subject-card__icon">◇</span><span class="tag">1º ano</span></div>
+            <h3>Lógica de Programação</h3>
+            <p>Organize o pensamento e transforme problemas em passos claros e executáveis.</p>
+            <button type="button" data-course="logica">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--yellow" data-year="1" data-search="introdução informática computador software hardware arquivos internet">
+            <div class="subject-card__top"><span class="subject-card__icon">⌘</span><span class="tag">1º ano</span></div>
+            <h3>Introdução à Informática</h3>
+            <p>Conheça os fundamentos do computador, sistemas, arquivos e cidadania digital.</p>
+            <button type="button" data-course="informatica">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--cyan" data-year="1" data-search="banco dados sql tabelas informação consulta relacionamento">
+            <div class="subject-card__top"><span class="subject-card__icon">▤</span><span class="tag">1º ano</span></div>
+            <h3>Banco de Dados</h3>
+            <p>Modele informações e aprenda como aplicações armazenam e consultam dados.</p>
+            <button type="button" data-course="banco">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--red" data-year="1" data-search="montagem manutenção hardware computador peças diagnóstico suporte">
+            <div class="subject-card__top"><span class="subject-card__icon">⚙</span><span class="tag">1º ano</span></div>
+            <h3>Montagem e Manutenção</h3>
+            <p>Identifique componentes, monte equipamentos e pratique diagnóstico técnico.</p>
+            <button type="button" data-course="manutencao">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--purple" data-year="3" data-search="desenvolvimento sistemas aplicações software arquitetura integração código">
+            <div class="subject-card__top"><span class="subject-card__icon">⌬</span><span class="tag">3º ano</span></div>
+            <h3>Desenvolvimento de Sistemas</h3>
+            <p>Planeje e construa aplicações integrando interface, regras de negócio e dados.</p>
+            <button type="button" data-course="sistemas">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--orange" data-year="3" data-search="modelagem sistemas requisitos uml diagramas casos uso documentação">
+            <div class="subject-card__top"><span class="subject-card__icon">▦</span><span class="tag">3º ano</span></div>
+            <h3>Modelagem de Sistemas</h3>
+            <p>Represente requisitos, processos e estruturas antes de começar a programar.</p>
+            <button type="button" data-course="modelagem">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--blue" data-year="3" data-search="implantação manutenção sistemas deploy publicação monitoramento suporte atualização">
+            <div class="subject-card__top"><span class="subject-card__icon">⇧</span><span class="tag">3º ano</span></div>
+            <h3>Implantação e Manutenção de Sistemas</h3>
+            <p>Prepare, publique, monitore e mantenha sistemas funcionando com segurança.</p>
+            <button type="button" data-course="implantacao">Ver disciplina <span>↗</span></button>
+          </article>
+
+          <article class="subject-card subject-card--green" data-year="3" data-search="projeto integrador planejamento solução problema documentação apresentação equipe">
+            <div class="subject-card__top"><span class="subject-card__icon">✦</span><span class="tag">3º ano</span></div>
+            <h3>Projeto Integrador</h3>
+            <p>Una os conhecimentos do curso para desenvolver uma solução completa em equipe.</p>
+            <button type="button" data-course="integrador">Ver disciplina <span>↗</span></button>
+          </article>
+        </div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <span>⌕</span>
+          <h3>Nenhuma disciplina encontrada</h3>
+          <p>Tente outro termo ou escolha o filtro “Todas”.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section path" id="trilha">
+      <div class="container">
+        <div class="path__intro">
+          <span class="eyebrow">Trilha de aprendizagem</span>
+          <h2>Uma ideia, várias disciplinas.</h2>
+          <p>Construir este site é uma oportunidade para conectar o conteúdo do curso inteiro em um único projeto.</p>
+          <button class="button button--primary" type="button" data-course="web">Começar o projeto <span>→</span></button>
+        </div>
+        <ol class="path__steps">
+          <li><span>01</span><div><small>Planejar</small><strong>Lógica</strong><p>Defina o problema, o público e as funções do site.</p></div></li>
+          <li><span>02</span><div><small>Estruturar</small><strong>HTML + CSS</strong><p>Organize o conteúdo e crie uma interface responsiva.</p></div></li>
+          <li><span>03</span><div><small>Programar</small><strong>JavaScript</strong><p>Adicione busca, filtros, eventos e dados dinâmicos.</p></div></li>
+          <li><span>04</span><div><small>Conectar</small><strong>Projeto completo</strong><p>Teste, publique e compartilhe o resultado da turma.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="container">
+        <div class="section-heading section-heading--center">
+          <div>
+            <span class="eyebrow eyebrow--dark">Por que este projeto?</span>
+            <h2>Menos teoria solta. Mais prática com propósito.</h2>
+          </div>
+        </div>
+        <div class="benefits">
+          <article><span>01</span><h3>Aprender fazendo</h3><p>Cada recurso do site vira um exemplo que pode ser alterado e testado na hora.</p></article>
+          <article><span>02</span><h3>Conectar conteúdos</h3><p>O projeto mostra que as disciplinas não são ilhas: elas formam uma solução.</p></article>
+          <article><span>03</span><h3>Evoluir em etapas</h3><p>A turma começa simples e pode adicionar login, banco de dados e novas páginas depois.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="duvidas">
+      <div class="container faq__layout">
+        <div class="faq__intro">
+          <span class="eyebrow eyebrow--dark">Perguntas frequentes</span>
+          <h2>Antes de abrir o editor...</h2>
+          <p>Algumas respostas para orientar o início do projeto com a turma.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion__item">
+            <button type="button" aria-expanded="true"><span>Precisamos instalar alguma biblioteca?</span><b>−</b></button>
+            <div class="accordion__answer"><p>Não. O projeto usa somente HTML, CSS e JavaScript. Basta um editor de código e um navegador moderno.</p></div>
+          </article>
+          <article class="accordion__item">
+            <button type="button" aria-expanded="false"><span>O que os alunos podem alterar primeiro?</span><b>+</b></button>
+            <div class="accordion__answer" hidden><p>Comece pelos textos e cores. Depois, explore os dados das disciplinas, os filtros e os eventos de clique no JavaScript.</p></div>
+          </article>
+          <article class="accordion__item">
+            <button type="button" aria-expanded="false"><span>Este site funciona no celular?</span><b>+</b></button>
+            <div class="accordion__answer" hidden><p>Sim. O layout é responsivo e o menu se adapta a telas menores. Isso também rende uma ótima aula sobre media queries.</p></div>
+          </article>
+          <article class="accordion__item">
+            <button type="button" aria-expanded="false"><span>Onde a “Minha trilha” é salva?</span><b>+</b></button>
+            <div class="accordion__answer" hidden><p>No localStorage do navegador. Assim é possível ensinar persistência de dados sem precisar de servidor ou banco de dados nesta primeira versão.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta__content">
+        <div><span class="eyebrow">Pronto para começar?</span><h2>A tecnologia se aprende criando.</h2></div>
+        <a class="button button--light" href="#disciplinas">Escolher uma disciplina <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <a class="brand brand--footer" href="#inicio"><span class="brand__mark">T<span>/</span></span><span><strong>Trilha</strong>Técnica<small>Projeto didático</small></span></a>
+      <p>Feito para aprender, testar e compartilhar conhecimento.</p>
+      <p>HTML · CSS · JavaScript</p>
+    </div>
+  </footer>
+
+  <section class="presentation-shell" id="presentationShell" aria-hidden="true" hidden>
+    <div class="presentation-backdrop" aria-hidden="true"></div>
+    <div class="presentation-slide" id="presentationSlide" aria-hidden="true"></div>
+
+    <aside class="presentation-palette" id="presentationPalette" aria-label="Comparação visual do CSS" hidden>
+      <header>
+        <div><span>CSS em ação</span><strong id="presentationCssState">COM CSS</strong></div>
+        <i id="presentationCssIcon" aria-hidden="true">✦</i>
+      </header>
+      <p id="presentationCssSummary">A estrutura recebeu aparência, organização e adaptação visual.</p>
+      <ul>
+        <li data-css-feature="colors"><button type="button" data-css-select="colors"><i style="--swatch:#5d35d8"></i><span><strong>Cores</strong><small>Clique para trocar a paleta</small></span></button></li>
+        <li data-css-feature="corners"><button type="button" data-css-select="corners"><i class="presentation-palette__corners">⌜</i><span><strong>Cantos</strong><small>Clique para variar o raio</small></span></button></li>
+        <li data-css-feature="fonts"><button type="button" data-css-select="fonts"><i class="presentation-palette__type">Aa</i><span><strong>Fontes</strong><small>Clique para trocar a família</small></span></button></li>
+        <li data-css-feature="sizes"><button type="button" data-css-select="sizes"><i class="presentation-palette__size">A↕</i><span><strong>Tamanhos</strong><small>Clique para mudar a escala</small></span></button></li>
+        <li data-css-feature="spacing"><button type="button" data-css-select="spacing"><i class="presentation-palette__space"></i><span><strong>Espaçamento</strong><small>Clique para mudar a densidade</small></span></button></li>
+        <li data-css-feature="shadows"><button type="button" data-css-select="shadows"><i class="presentation-palette__shadow">◒</i><span><strong>Sombras</strong><small>Clique para mudar cor e tamanho</small></span></button></li>
+        <li data-css-feature="unstyled"><button type="button" data-css-select="unstyled"><i class="presentation-palette__unstyled">&lt;/&gt;</i><span><strong>Sem CSS</strong><small>Clique para mostrar somente a estrutura</small></span></button></li>
+      </ul>
+      <footer>Demonstração automática · <strong>troca a cada 4 segundos</strong></footer>
+    </aside>
+
+    <div class="presentation-js-map" id="presentationJsMap" aria-label="Mapa das interações JavaScript" hidden>
+      <div class="presentation-js-spotlight" id="presentationJsSpotlight" aria-hidden="true" hidden>
+        <i data-spotlight-pane="top"></i>
+        <i data-spotlight-pane="left"></i>
+        <i data-spotlight-pane="right"></i>
+        <i data-spotlight-pane="bottom"></i>
+      </div>
+      <div class="presentation-js-legend"><span>JavaScript = ação → resposta</span><strong id="presentationJsStatus">Escolha um marcador ou acompanhe a demonstração automática</strong></div>
+      <div id="presentationJsMarkers"></div>
+    </div>
+
+    <aside class="presentation-guide" id="presentationGuide" aria-label="Controles do modo apresentação">
+      <div class="presentation-guide__copy">
+        <span id="presentationGuideSection">Introdução</span>
+        <strong id="presentationGuideTitle">Dois projetos, duas formas de criar</strong>
+        <p id="presentationGuideDescription"></p>
+        <small id="presentationGuideCue"></small>
+      </div>
+      <div class="presentation-guide__actions">
+        <span id="presentationGuideProgress" aria-live="polite">1 de 11</span>
+        <button id="presentationPrevious" type="button">Voltar</button>
+        <button id="presentationNext" type="button">Avançar</button>
+        <button id="presentationExit" type="button">Sair</button>
+      </div>
+    </aside>
+
+    <div class="visually-hidden" id="presentationLive" role="status" aria-live="polite"></div>
+  </section>
+
+  <dialog class="modal" id="courseModal">
+    <div class="modal__header">
+      <span class="modal__icon" id="modalIcon">&lt;/&gt;</span>
+      <button type="button" data-close-modal aria-label="Fechar detalhes">×</button>
+    </div>
+    <div class="modal__content">
+      <span class="tag" id="modalYear">2º ano</span>
+      <h2 id="modalTitle">Desenvolvimento Web</h2>
+      <p id="modalDescription"></p>
+      <h3>Nesta disciplina</h3>
+      <ul id="modalTopics"></ul>
+      <button class="button button--primary button--full" id="saveCourse" type="button">+ Adicionar à minha trilha</button>
+    </div>
+  </dialog>
+
+  <aside class="trail-drawer" id="trailDrawer" aria-hidden="true" aria-labelledby="trailTitle">
+    <div class="trail-drawer__header">
+      <div><span class="eyebrow eyebrow--dark">Seus estudos</span><h2 id="trailTitle">Minha trilha</h2></div>
+      <button id="closeTrail" type="button" aria-label="Fechar minha trilha">×</button>
+    </div>
+    <div class="trail-drawer__list" id="trailList"></div>
+  </aside>
+  <div class="page-overlay" id="pageOverlay"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
