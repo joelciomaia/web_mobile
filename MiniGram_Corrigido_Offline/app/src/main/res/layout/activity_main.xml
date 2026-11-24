@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/mg_background">
+
+    <!-- CABEÇALHO COMPACTO: toque para abrir SÓ o perfil (não há botão gigante) -->
+    <LinearLayout
+        android:id="@+id/cabecalhoPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="16dp"
+        android:background="@color/mg_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Abrir meu perfil">
+
+        <ImageView
+            android:id="@+id/imagemCabecalho"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Foto do perfil"
+            android:src="@drawable/ic_mg_profile" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Meu perfil"
+                android:textColor="@color/mg_text"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:maxLines="1" />
+            <TextView
+                android:id="@+id/txtUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toque para configurar"
+                android:textColor="@color/mg_subtle"
+                android:textSize="12sp"
+                android:maxLines="1" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar  ›"
+            android:textColor="@color/mg_accent_light"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/mg_divider" />
+
+    <!-- PUBLICAÇÃO ORIGINAL - MANTIDA NA TELA INICIAL -->
+    <EditText
+        android:id="@+id/edtTexto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:hint="No que você está pensando?"
+        android:textColor="@color/mg_text"
+        android:textColorHint="@color/mg_subtle"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="280"
+        android:minLines="2"
+        android:maxLines="4" />
+
+    <TextView
+        android:id="@+id/txtAnexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/mg_subtle"
+        android:textSize="12sp" />
+
+    <HorizontalScrollView
+        android:id="@+id/scrollPreview"
+        android:layout_width="match_parent"
+        android:layout_height="101dp"
+        android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/previewImagens"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end|center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="7dp">
+        <Button
+            android:id="@+id/btnFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecionar imagens"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/btnPublicar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:text="Publicar"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/mg_purple"
+            android:textColor="@color/mg_text" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/mg_divider" />
+
+    <!-- TIMELINE ÚNICA: todas as publicações aparecem aqui -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        <LinearLayout
+            android:id="@+id/feed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp" />
+    </ScrollView>
+</LinearLayout>
